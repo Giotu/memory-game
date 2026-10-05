@@ -1,15 +1,23 @@
 import { createElement } from "../helpers/createElement.js";
 
-function createCard(character) {
-  const card = createElement("div", { className: "card" });
+function createCard(card) {
+  const cardElement = createElement("div", { className: "card" });
+
+  cardElement.dataset.cardId = card.id;
+
+  const cardInner = createElement("div", { className: "card__inner" });
+  const cardFront = createElement("div", { className: "card__front" });
+  const cardBack = createElement("div", { className: "card__back" });
 
   const image = createElement("img", { className: "card__image" });
-  image.src = character.image;
-  image.alt = character.name;
+  image.src = card.image;
+  image.alt = card.name;
 
-  card.append(image);
+  cardFront.append(image);
+  cardInner.append(cardFront, cardBack);
+  cardElement.append(cardInner);
 
-  return card;
+  return cardElement;
 }
 
 export { createCard };
