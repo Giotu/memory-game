@@ -17,13 +17,20 @@ function createGameBoard() {
     if (!cardElement) return;
 
     const cardId = Number(cardElement.dataset.cardId);
-    const card = game.openCard(cardId);
+    const card = game.openCard(cardId, handleCardsClosed);
     if (!card) return;
 
     updateCard(cardElement, card);
   });
 
   return containerBoard;
+}
+
+function handleCardsClosed(cards) {
+  cards.forEach((card) => {
+    const cardElement = document.querySelector(`[data-card-id="${card.id}"]`);
+    updateCard(cardElement, card);
+  });
 }
 
 export { createGameBoard };

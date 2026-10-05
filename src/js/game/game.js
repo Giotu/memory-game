@@ -7,7 +7,7 @@ const game = {
   selectedCards: [],
   isLocked: false,
 
-  openCard(id) {
+  openCard(id, callback) {
     if (this.isLocked) {
       return null;
     }
@@ -25,8 +25,10 @@ const game = {
             this.markSelectedCardsAsMatched();
             this.selectedCards = [];
           } else {
-            this.closeSelectedCards();
+            this.closeSelectedCards(callback);
           }
+
+          this.moves += 1;
         }
         return card;
       }
@@ -39,12 +41,15 @@ const game = {
     return this.selectedCards[0].characterId === this.selectedCards[1].characterId;
   },
 
-  closeSelectedCards() {
+  closeSelectedCards(callback) {
     this.isLocked = true;
     setTimeout(() => {
+      const cards = this.selectedCards;
+
       this.selectedCards.forEach((card) => (card.isOpen = false));
       this.selectedCards = [];
       this.isLocked = false;
+      callback(cards);
     }, 1500);
   },
 
