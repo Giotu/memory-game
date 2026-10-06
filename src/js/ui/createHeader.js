@@ -7,6 +7,10 @@ function createHeader() {
     className: "container",
   });
 
+  const headerInner = createElement("div", {
+    className: "header__inner",
+  });
+
   const logo = createElement("img", { className: "header__logo" });
   logo.src = "...";
   logo.alt = "Memory Game";
@@ -25,7 +29,8 @@ function createHeader() {
   });
 
   buttonsContainer.append(buttonNewGame, buttonLeaderboard);
-  container.append(logo, buttonsContainer);
+  headerInner.append(logo, buttonsContainer);
+  container.append(headerInner);
   header.append(container);
 
   return header;

@@ -17,10 +17,14 @@ function createGameBoard() {
     if (!cardElement) return;
 
     const cardId = Number(cardElement.dataset.cardId);
-    const card = game.openCard(cardId, handleCardsClosed);
-    if (!card) return;
+    const data = game.openCard(cardId, handleCardsClosed);
+    if (!data) return;
 
+    const { card, isGameOver } = data;
     updateCard(cardElement, card);
+    if (isGameOver) {
+      //
+    }
   });
 
   return containerBoard;

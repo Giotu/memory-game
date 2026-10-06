@@ -29,8 +29,9 @@ const game = {
           }
 
           this.moves += 1;
+          if (this.foundPairs === 8) return { card, isGameOver: true, moves: this.moves };
         }
-        return card;
+        return { card, isGameOver: false, moves: this.moves };
       }
     }
 
