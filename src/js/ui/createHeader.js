@@ -1,7 +1,7 @@
 import { createElement } from "@/js/helpers/createElement.js";
 import logoImage from "@/assets/images/logo.png";
 
-function createHeader(handleNewGame) {
+function createHeader(handleNewGame, handleLeaderboard) {
   const header = createElement("header", { className: "header" });
 
   const container = createElement("div", {
@@ -25,12 +25,13 @@ function createHeader(handleNewGame) {
     text: "New Game",
   });
 
-  buttonNewGame.addEventListener("click", handleNewGame);
-
   const buttonLeaderboard = createElement("button", {
     className: "header__button",
     text: "Leader Board",
   });
+
+  buttonNewGame.addEventListener("click", handleNewGame);
+  buttonLeaderboard.addEventListener("click", handleLeaderboard);
 
   buttonsContainer.append(buttonNewGame, buttonLeaderboard);
   headerInner.append(logo, buttonsContainer);

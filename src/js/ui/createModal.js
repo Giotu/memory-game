@@ -38,6 +38,9 @@ function createModal(title, contentElement) {
     close() {
       modal.close();
     },
+    setContent(contentElement) {
+      modal.replaceChildren(modalTitle, contentElement, buttonClose);
+    },
   };
 }
 export { createModal };

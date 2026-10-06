@@ -146,3 +146,18 @@ button {
   color: #fff;
   cursor: pointer;
 }
+
+.leaderboard__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard__table th,
+.leaderboard__table td {
+  padding: 8px 20px;
+  text-align: center;
+}
+
+.leaderboard__table th {
+  font-weight: 600;
+}
