@@ -1,4 +1,5 @@
 import { createElement } from "@/js/helpers/createElement.js";
+import logoImage from "@/assets/images/logo.png";
 
 function createHeader(handleNewGame) {
   const header = createElement("header", { className: "header" });
@@ -12,7 +13,7 @@ function createHeader(handleNewGame) {
   });
 
   const logo = createElement("img", { className: "header__logo" });
-  logo.src = "...";
+  logo.src = logoImage;
   logo.alt = "Memory Game";
 
   const buttonsContainer = createElement("div", {

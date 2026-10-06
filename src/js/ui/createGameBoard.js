@@ -12,7 +12,7 @@ function renderCards(containerBoard) {
   });
 }
 
-function createGameBoard() {
+function createGameBoard(handleGameUpdate, handleGameOver) {
   const containerBoard = createElement("div", { className: "game-board" });
 
   renderCards(containerBoard);
@@ -25,10 +25,12 @@ function createGameBoard() {
     const data = game.openCard(cardId, handleCardsClosed);
     if (!data) return;
 
+    handleGameUpdate(data);
+
     const { card, isGameOver } = data;
     updateCard(cardElement, card);
     if (isGameOver) {
-      //
+      handleGameOver(data);
     }
   });
 

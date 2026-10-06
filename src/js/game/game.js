@@ -18,6 +18,7 @@ const game = {
       if (!card.isOpen && !card.isMatched) {
         this.selectedCards.push(card);
         card.isOpen = true;
+        let isGameOver = false;
         if (this.selectedCards.length === 2) {
           const isEqualCards = this.compareCards();
 
@@ -30,9 +31,14 @@ const game = {
           }
 
           this.moves += 1;
-          if (this.foundPairs === 8) return { card, isGameOver: true, moves: this.moves };
+          isGameOver = this.foundPairs === 8;
         }
-        return { card, isGameOver: false, moves: this.moves };
+        return {
+          card,
+          isGameOver: isGameOver,
+          moves: this.moves,
+          foundPairs: this.foundPairs,
+        };
       }
     }
 
