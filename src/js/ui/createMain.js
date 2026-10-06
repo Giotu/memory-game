@@ -10,10 +10,10 @@ function createMain() {
 
   const gameBoard = createGameBoard();
 
-  container.append(gameBoard);
+  container.append(gameBoard.element);
   main.append(container);
 
-  return main;
+  return { element: main, gameBoard };
 }
 
 export { createMain };

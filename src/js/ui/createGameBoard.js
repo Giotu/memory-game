@@ -3,14 +3,19 @@ import { createElement } from "../helpers/createElement.js";
 import { createCard } from "./createCard.js";
 import { updateCard } from "./updateCard.js";
 
-function createGameBoard() {
-  const containerBoard = createElement("div", { className: "game-board" });
-  console.log(game.cards);
+function renderCards(containerBoard) {
+  containerBoard.replaceChildren();
 
   game.cards.forEach((card) => {
     const cardElement = createCard(card);
     containerBoard.append(cardElement);
   });
+}
+
+function createGameBoard() {
+  const containerBoard = createElement("div", { className: "game-board" });
+
+  renderCards(containerBoard);
 
   containerBoard.addEventListener("click", (event) => {
     const cardElement = event.target.closest(".card");
@@ -27,7 +32,7 @@ function createGameBoard() {
     }
   });
 
-  return containerBoard;
+  return { element: containerBoard, reset: () => renderCards(containerBoard) };
 }
 
 function handleCardsClosed(cards) {

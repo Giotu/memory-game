@@ -1,6 +1,6 @@
 import { createElement } from "@/js/helpers/createElement.js";
 
-function createHeader() {
+function createHeader(handleNewGame) {
   const header = createElement("header", { className: "header" });
 
   const container = createElement("div", {
@@ -23,6 +23,9 @@ function createHeader() {
     className: "header__button",
     text: "New Game",
   });
+
+  buttonNewGame.addEventListener("click", handleNewGame);
+
   const buttonLeaderboard = createElement("button", {
     className: "header__button",
     text: "Leader Board",

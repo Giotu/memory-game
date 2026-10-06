@@ -6,6 +6,7 @@ const game = {
   foundPairs: 0,
   selectedCards: [],
   isLocked: false,
+  timerId: null,
 
   openCard(id, callback) {
     if (this.isLocked) {
@@ -44,12 +45,13 @@ const game = {
 
   closeSelectedCards(callback) {
     this.isLocked = true;
-    setTimeout(() => {
+    this.timerId = setTimeout(() => {
       const cards = this.selectedCards;
 
       this.selectedCards.forEach((card) => (card.isOpen = false));
       this.selectedCards = [];
       this.isLocked = false;
+      this.timerId = null;
       callback(cards);
     }, 1500);
   },
@@ -58,6 +60,16 @@ const game = {
     this.selectedCards.forEach((card) => {
       card.isMatched = true;
     });
+  },
+
+  reset() {
+    this.cards = createCardDeck();
+    this.moves = 0;
+    this.foundPairs = 0;
+    this.selectedCards = [];
+    this.isLocked = false;
+    clearTimeout(this.timerId);
+    this.timerId = null;
   },
 };
 
