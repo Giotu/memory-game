@@ -1,0 +1,163 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(../assets/images/background.webp);
+  background-size: cover;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 20px;
+}
+
+.header__logo {
+  width: 100px;
+}
+
+.header__actions {
+  display: flex;
+  gap: 16px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: #002242;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 200px);
+  gap: 10px;
+  padding: 10px;
+  margin-block: 40px;
+  border: 2px solid rgb(0, 132, 194);
+  border-radius: 40px;
+}
+
+.card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card__inner {
+  border: 1px solid rgb(0, 153, 255);
+  border-radius: 40px;
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  background-color: #52acff;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  inset: 0;
+
+  backface-visibility: hidden;
+}
+
+.card__front {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.card__back {
+  border-radius: 40px;
+  background-image: url(../assets/images/back.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.card__image {
+  max-width: 150px;
+}
+
+.card--open .card__inner {
+  transform: rotateY(180deg);
+}
+
+.modal {
+  display: none;
+  max-width: 500px;
+  width: calc(100% - 40px);
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  border-radius: 40px;
+  background: #52acff;
+  margin: auto;
+}
+
+.modal[open] {
+  display: flex;
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 60%);
+  cursor: pointer;
+}
+
+.modal__title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.modal__content {
+  display: flex;
+  font-size: 24px;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+button {
+  padding: 12px 24px;
+  border: 1px solid #00396e;
+  border-radius: 16px;
+  background: #0077ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.leaderboard__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard__table th,
+.leaderboard__table td {
+  padding: 8px 20px;
+  text-align: center;
+}
+
+.leaderboard__table th {
+  font-weight: 600;
+}
